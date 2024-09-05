@@ -2,10 +2,13 @@ echo "hello I'll run every time"
 
 pipeline {
     agent any
+    parameters {
+      string defaultValue: 'hello; ls /', name: 'SOME_STRING'
+    }
     stages {
         stage('Stage 1') {
             steps {
-                echo 'Hello world!'
+                sh ('echo ${SOME_STRING}')
             }
         }
     }
