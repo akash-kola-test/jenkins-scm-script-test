@@ -1,3 +1,5 @@
+echo "hello I'll run every time"
+
 pipeline {
     agent any
     stages {
