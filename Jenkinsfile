@@ -1,14 +1,12 @@
-echo "hello I'll run every time"
-
 pipeline {
-    agent any
-    parameters {
-      string defaultValue: 'hello; ls /', name: 'SOME_STRING'
-    }
+    agent none
     stages {
         stage('Stage 1') {
+            agent {
+                docker { image: 'alpine' }
+            }
             steps {
-                sh ('echo ${SOME_STRING}')
+                sh ('echo hello')
             }
         }
     }
