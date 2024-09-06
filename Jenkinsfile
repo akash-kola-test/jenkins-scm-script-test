@@ -1,15 +1,20 @@
-echo "hello I'll run every time"
-
 pipeline {
-    agent any
-    parameters {
-      string defaultValue: 'hello; ls /', name: 'SOME_STRING'
+  agent {
+    docker {
+      image 'alpine'
     }
-    stages {
-        stage('Stage 1') {
-            steps {
-                sh ('echo ${SOME_STRING}')
-            }
-        }
+
+  }
+  stages {
+    stage('Stage 1') {
+      steps {
+        sh 'echo hello'
+        validateDeclarativePipeline 'Jenkinsfile'
+      }
     }
+
+  }
+  parameters {
+    string(defaultValue: 'hello; ls /', name: 'SOME_STRING')
+  }
 }
