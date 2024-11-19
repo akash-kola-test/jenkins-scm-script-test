@@ -11,5 +11,15 @@ pipeline {
                 sh ('echo ${SOME_STRING}')
             }
         }
+        stage('Stage 2') {
+            agent {
+                docker {
+                    image 'alpine'
+                }
+            }
+            steps {
+                sh "echo 'Hello World'"
+            }
+        }
     }
 }
