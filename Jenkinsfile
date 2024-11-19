@@ -9,6 +9,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 sh ('echo ${SOME_STRING}')
+                sh ("echo ${SOME_STRING)')
             }
         }
         stage('Stage 2') {
