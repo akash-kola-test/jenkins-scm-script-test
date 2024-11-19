@@ -20,6 +20,8 @@ pipeline {
             }
             steps {
                 sh "echo 'Hello World'"
+                sh 'apk add python3'
+                sh 'python3 --version'
             }
         }
     }
